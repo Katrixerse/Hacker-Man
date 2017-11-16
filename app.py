@@ -26,8 +26,8 @@ async def on_message(message):
        async def echo(*, message: str):
        8ballresponse = random.choice({"It is certain.", "No doubt about it.", "No chance."})
          embed=discord.Embed()
-         embed.add_field(name=You asked:, value=message, inline=False)
-         embed.add_field(name=8ball says:, value=8ballresponse, inline=False)
+         embed.add_field(name="You asked:", value=message, inline=False)
+         embed.add_field(name="8ball says:", value=8ballresponse, inline=False)
        await client.say(embed=embed)
         
 client.run('token')
