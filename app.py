@@ -8,6 +8,7 @@ prefix = "?"
 @client.event
 async def on_ready():
     print('Ready!')
+    await client.change_presence(game=discord.Game(name='Some game'))
     
 @client.event
 async def on_message(message):
@@ -22,7 +23,11 @@ async def on_message(message):
        await client.send_message(message.channel, 'The coin has been flipped and landed on' + cointoflip)
         
     if message.content.startswith(prefix + '8ball'):
-       cointoflip = random.choice({"It is certain.", "No doubt about it.", "No chance."})
-       await client.send_message(message.channel, 'The coin has been flipped and landed on' + cointoflip)
+       async def echo(*, message: str):
+       8ballresponse = random.choice({"It is certain.", "No doubt about it.", "No chance."})
+         embed=discord.Embed()
+         embed.add_field(name=You asked:, value=message, inline=False)
+         embed.add_field(name=8ball says:, value=8ballresponse, inline=False)
+       await client.say(embed=embed)
         
 client.run('token')
